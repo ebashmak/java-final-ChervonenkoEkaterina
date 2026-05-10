@@ -6,5 +6,7 @@ import java.util.Optional;
 
 public interface ChervonenkoEkaterinaUserRepository extends JpaRepository<ChervonenkoEkaterinaUser, Long> {
     Optional<ChervonenkoEkaterinaUser> findByEmail(String email);
+    Optional<ChervonenkoEkaterinaUser> findByUsername(String username);
     boolean existsByEmail(String email);
+    boolean existsByUsername(String username);
 }
