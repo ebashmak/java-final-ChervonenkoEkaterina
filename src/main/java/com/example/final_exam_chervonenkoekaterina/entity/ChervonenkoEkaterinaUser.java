@@ -16,7 +16,7 @@ public class ChervonenkoEkaterinaUser {
     private String email;
 
     private String password;
-    private String name;
+    private String username;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> roles;
