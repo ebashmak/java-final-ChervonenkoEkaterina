@@ -1,8 +1,14 @@
 package com.example.final_exam_chervonenkoekaterina.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -15,6 +21,7 @@ public class ChervonenkoEkaterinaCourse {
     @NotBlank
     private String title;
 
+    @NotBlank
     private String description;
 
     @ManyToOne
@@ -22,4 +29,16 @@ public class ChervonenkoEkaterinaCourse {
     private ChervonenkoEkaterinaCategory category;
 
     private Double price;
+
+    @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<ChervonenkoEkaterinaLesson> lessons = new ArrayList<>();
+
+    @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChervonenkoEkaterinaEnrollment> enrollments = new ArrayList<>();
 }

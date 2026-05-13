@@ -2,6 +2,9 @@ package com.example.final_exam_chervonenkoekaterina.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "enrollments")
 @Data
@@ -18,5 +21,5 @@ public class ChervonenkoEkaterinaEnrollment {
     @JoinColumn(name = "course_id")
     private ChervonenkoEkaterinaCourse course;
 
-    private java.time.LocalDateTime enrollmentDate = java.time.LocalDateTime.now();
+    private LocalDateTime enrollmentDate = LocalDateTime.now();
 }
