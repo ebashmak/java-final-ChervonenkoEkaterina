@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChervonenkoEkaterinaCategoryDTO {
-
     private Long id;
 
     @NotBlank(message = "Название категории не может быть пустым")
