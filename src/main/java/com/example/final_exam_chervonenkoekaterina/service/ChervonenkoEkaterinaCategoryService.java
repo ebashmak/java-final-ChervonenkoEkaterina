@@ -55,14 +55,18 @@ public class ChervonenkoEkaterinaCategoryService {
     }
 
     @Transactional
-    public ChervonenkoEkaterinaCategory update(Long id, String newName) {
+    public ChervonenkoEkaterinaCategoryDTO update(Long id, String newName) {
         log.info("Updating category with id {}. New name: {}", id, newName);
 
         ChervonenkoEkaterinaCategory category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
 
         category.setName(newName);
+        ChervonenkoEkaterinaCategory savedCategory = categoryRepository.save(category);
 
-        return categoryRepository.save(category);
+        return new ChervonenkoEkaterinaCategoryDTO(
+                savedCategory.getId(),
+                savedCategory.getName()
+        );
     }
 }

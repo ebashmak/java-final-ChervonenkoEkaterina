@@ -24,7 +24,6 @@ public class ChervonenkoEkaterinaReviewController {
         return ResponseEntity.ok(reviewService.addReview(dto));
     }
 
-    // /api/reviews/course/1
     @Operation(summary = "Получить отзывы курса", description = "Возвращает список всех отзывов для конкретного курса по его ID")
     @GetMapping("/course/{courseId}")
     public ResponseEntity<List<ChervonenkoEkaterinaReviewDTO>> getByCourse(@PathVariable Long courseId) {

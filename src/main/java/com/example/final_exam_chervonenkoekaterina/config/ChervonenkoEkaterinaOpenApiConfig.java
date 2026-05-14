@@ -11,6 +11,11 @@ import org.springframework.context.annotation.Configuration;
 
 // http://localhost:8081/swagger-ui/index.html
 
+//{
+//  "email": "chrvn.katya@gmail.com",
+//  "password": "123456789"
+//}
+
 @Configuration
 public class ChervonenkoEkaterinaOpenApiConfig {
 

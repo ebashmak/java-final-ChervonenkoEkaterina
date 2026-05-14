@@ -21,15 +21,15 @@ public class ChervonenkoEkaterinaSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http){
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/files/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
-                        // доступ к Swagger
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers("/api/reviews/**").permitAll()
+                        .requestMatchers("/api/users/**").permitAll()
+                        .requestMatchers("/api/courses/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
